@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Injector V4.5 - Specific Links</title>
+    <title>Server Injector V5.0 - Easy Config</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Google Font -->
@@ -35,7 +35,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Grid Overlay untuk efek "Tech" */
+        /* Grid Overlay */
         .grid-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -62,6 +62,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
         }
         
         .btn-vip::before {
@@ -78,7 +79,7 @@
         }
 
         .btn-vip:hover {
-            box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.7);
             transform: translateY(-2px);
             border-color: #a78bfa;
         }
@@ -98,104 +99,58 @@
         .text-glow {
             text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
         }
-
-        /* Terminal Font */
-        .font-mono {
-            font-family: 'Space Mono', monospace;
-        }
-
-        /* Scrollbar Terminal */
+        .font-mono { font-family: 'Space Mono', monospace; }
         .terminal-scroll::-webkit-scrollbar { width: 4px; }
         .terminal-scroll::-webkit-scrollbar-track { background: #000; }
         .terminal-scroll::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 2px; }
 
-        /* Animation Pulse Status */
         @keyframes statusPulse {
             0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
             70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
             100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
         }
-        .status-dot-active {
-            animation: statusPulse 2s infinite;
-        }
+        .status-dot-active { animation: statusPulse 2s infinite; }
 
-        /* --- CUSTOM TOGGLE SWITCH --- */
-        .toggle-checkbox:checked {
-            right: 0;
-            border-color: #34d399; /* emerald-400 */
-        }
-        .toggle-checkbox:checked + .toggle-label {
-            background-color: #34d399; /* emerald-400 */
-        }
-        .toggle-label {
-            width: 36px;
-            height: 20px;
-            background-color: #374151; /* gray-700 */
-            border-radius: 9999px;
-            position: relative;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in;
-        }
-        .toggle-label:after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 16px;
-            height: 16px;
-            background-color: white;
-            border-radius: 50%;
-            transition: transform 0.2s ease-in;
-        }
-        .toggle-checkbox:checked + .toggle-label:after {
-            transform: translateX(100%);
-        }
-
-        /* Khusus Toggle Super Hack (Merah) */
-        .toggle-checkbox.super-hack:checked {
-            border-color: #ef4444; /* red-500 */
-        }
-        .toggle-checkbox.super-hack:checked + .toggle-label {
-            background-color: #ef4444; /* red-500 */
-        }
+        .toggle-checkbox:checked { right: 0; border-color: #34d399; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #34d399; }
+        .toggle-label { width: 36px; height: 20px; background-color: #374151; border-radius: 9999px; position: relative; cursor: pointer; transition: background-color 0.2s ease-in; }
+        .toggle-label:after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background-color: white; border-radius: 50%; transition: transform 0.2s ease-in; }
+        .toggle-checkbox:checked + .toggle-label:after { transform: translateX(100%); }
+        .toggle-checkbox.super-hack:checked { border-color: #ef4444; }
+        .toggle-checkbox.super-hack:checked + .toggle-label { background-color: #ef4444; }
 
     </style>
 </head>
 <body class="text-white flex items-start justify-center min-h-screen py-10 px-4">
 
-    <!-- Background Elements -->
     <div class="bg-animate"></div>
     <div class="grid-overlay"></div>
 
-    <!-- Main Container -->
     <main class="w-full max-w-md glass-panel rounded-2xl overflow-hidden relative z-10 mb-10">
         
-        <!-- Header Section -->
+        <!-- Header -->
         <header class="p-6 pb-2 text-center border-b border-white/5 relative">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
             <h1 class="text-3xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 text-glow">
-                INJECTOR V4.5
+                INJECTOR V5.0
             </h1>
             <p class="text-xs text-gray-400 tracking-[0.2em] mt-1">SECURE GATEWAY PROTOCOL</p>
         </header>
 
-        <!-- Live Stats Bar (Gimik) -->
+        <!-- Stats -->
         <div class="flex justify-between items-center px-6 py-3 bg-black/20 border-b border-white/5 text-xs font-mono">
             <div class="flex items-center space-x-2 text-emerald-400">
                 <span class="w-2 h-2 bg-emerald-500 rounded-full status-dot-active"></span>
                 <span>ONLINE: <span id="online-users" class="font-bold">1,240</span></span>
             </div>
-            <div class="text-purple-300">
-                SUCCESS RATE: <span id="success-rate" class="font-bold">98.5%</span>
-            </div>
+            <div class="text-purple-300">SUCCESS RATE: <span id="success-rate" class="font-bold">98.5%</span></div>
         </div>
 
-        <!-- Collapsible Settings / Configuration Panel -->
+        <!-- Settings Panel -->
         <section class="px-6 pt-4 pb-2">
-            <!-- Clickable Header to Toggle -->
             <button id="toggle-config-btn" class="w-full flex items-center justify-between mb-2 focus:outline-none group">
                 <div class="flex items-center gap-2">
-                    <svg id="config-icon" class="w-3 h-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <svg class="w-3 h-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                     <div class="text-left">
                         <h2 class="text-[10px] font-bold text-gray-400 tracking-widest font-mono group-hover:text-white transition-colors">SYSTEM CONFIGURATION</h2>
                         <span class="text-[9px] text-purple-400 animate-pulse font-mono block leading-none mt-0.5">▼ KLIK UNTUK BUKA PENGATURAN ▼</span>
@@ -205,119 +160,56 @@
                 <svg id="config-chevron" class="w-3 h-3 text-gray-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             
-            <!-- Collapsible Content -->
             <div id="config-content" class="grid grid-cols-2 gap-3 overflow-hidden transition-all duration-300 max-h-0 opacity-0">
-                <!-- Setting Item 1 -->
                 <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
                     <span class="text-[10px] text-gray-300 font-mono tracking-tight">ANTI-BAN PRO</span>
                     <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" name="toggle" id="toggle-antiban" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer hidden" checked/>
-                        <label for="toggle-antiban" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700 cursor-pointer"></label>
+                        <input type="checkbox" id="toggle-antiban" class="toggle-checkbox absolute block w-5 h-5 hidden" checked/>
+                        <label for="toggle-antiban" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700"></label>
                     </div>
                 </div>
-
-                <!-- Setting Item 2 -->
                 <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
                     <span class="text-[10px] text-gray-300 font-mono tracking-tight">HIGH WINRATE AI</span>
                     <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" name="toggle" id="toggle-winrate" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer hidden"/>
-                        <label for="toggle-winrate" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700 cursor-pointer"></label>
+                        <input type="checkbox" id="toggle-winrate" class="toggle-checkbox absolute block w-5 h-5 hidden"/>
+                        <label for="toggle-winrate" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700"></label>
                     </div>
                 </div>
-
-                <!-- Setting Item 3 -->
                 <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
                     <span class="text-[10px] text-gray-300 font-mono tracking-tight">BYPASS IP v2</span>
                     <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" name="toggle" id="toggle-bypass" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer hidden" checked/>
-                        <label for="toggle-bypass" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700 cursor-pointer"></label>
+                        <input type="checkbox" id="toggle-bypass" class="toggle-checkbox absolute block w-5 h-5 hidden" checked/>
+                        <label for="toggle-bypass" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700"></label>
                     </div>
                 </div>
-
-                 <!-- Setting Item 4 -->
                  <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
                     <span class="text-[10px] text-gray-300 font-mono tracking-tight">TURBO MODE</span>
                     <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" name="toggle" id="toggle-turbo" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer hidden"/>
-                        <label for="toggle-turbo" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700 cursor-pointer"></label>
+                        <input type="checkbox" id="toggle-turbo" class="toggle-checkbox absolute block w-5 h-5 hidden"/>
+                        <label for="toggle-turbo" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700"></label>
                     </div>
                 </div>
-
-                <!-- NEW: SUPER SCATTER HACK (Full Width) -->
                 <div class="col-span-2 bg-red-900/20 p-2 rounded border border-red-500/30 flex items-center justify-between shadow-[0_0_10px_rgba(239,68,68,0.1)]">
                     <div class="flex items-center gap-2">
                         <span class="animate-pulse text-red-500">⚠️</span>
                         <span class="text-[11px] text-red-200 font-mono tracking-wider font-bold text-glow">SUPER SCATTER HACK</span>
                     </div>
                     <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" name="toggle" id="toggle-super-scatter" class="toggle-checkbox super-hack absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer hidden"/>
-                        <label for="toggle-super-scatter" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700 cursor-pointer"></label>
+                        <input type="checkbox" id="toggle-super-scatter" class="toggle-checkbox super-hack absolute block w-5 h-5 hidden"/>
+                        <label for="toggle-super-scatter" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700"></label>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Server Selection -->
+        <!-- Server Selection (Container Kosong - Diisi oleh JS) -->
         <section class="p-6 space-y-4 pt-2">
             <h2 class="text-[10px] font-bold text-gray-400 tracking-widest font-mono mb-2">SELECT TARGET SERVER</h2>
+            
+            <div id="server-container-1"></div>
+            <div id="server-container-2"></div>
+            <div id="server-container-3"></div>
 
-            <!-- Server 1 (VIP) -->
-            <div class="relative group">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                <!-- UPDATED URL: Specific -->
-                <button class="server-btn btn-vip relative w-full p-4 rounded-lg flex items-center justify-between group-hover:scale-[1.01]"
-                        data-name="NAGAHITAM303"
-                        data-url="https://nagahitam303vly.net/register?ref=F88M8AD00772">
-                    <div class="flex items-center space-x-3">
-                        <div class="p-2 bg-white/10 rounded-lg">
-                            <svg class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <div class="text-left">
-                            <div class="font-bold text-lg leading-none">NAGAHITAM303</div>
-                            <div class="text-[10px] text-purple-200 mt-1 uppercase tracking-wider">Server Utama (VIP)</div>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-xs text-emerald-300 font-mono">PING: 12ms</div>
-                        <div class="w-2 h-2 bg-emerald-400 rounded-full ml-auto mt-1 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
-                    </div>
-                </button>
-            </div>
-
-            <!-- Server 2 -->
-            <!-- UPDATED URL: Specific -->
-            <button class="server-btn btn-standard w-full p-3 rounded-lg flex items-center justify-between"
-                    data-name="IBLBET"
-                    data-url="https://iblku.com/?ref=apkgacor">
-                <div class="flex items-center space-x-3">
-                    <div class="p-2 bg-gray-800 rounded-lg text-gray-400">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    </div>
-                    <div class="text-left">
-                        <div class="font-bold text-gray-200">IBLBET</div>
-                        <div class="text-[10px] text-gray-500 uppercase">Server Cadangan 1</div>
-                    </div>
-                </div>
-                <div class="text-xs text-gray-400 font-mono">PING: 24ms</div>
-            </button>
-
-            <!-- Server 3 -->
-            <!-- UPDATED URL: Specific -->
-            <button class="server-btn btn-standard w-full p-3 rounded-lg flex items-center justify-between"
-                    data-name="NX303"
-                    data-url="https://nx303ayo.xyz/?ref=apkgacor">
-                <div class="flex items-center space-x-3">
-                    <div class="p-2 bg-gray-800 rounded-lg text-gray-400">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                    </div>
-                    <div class="text-left">
-                        <div class="font-bold text-gray-200">NX303</div>
-                        <div class="text-[10px] text-gray-500 uppercase">Server Cadangan 2</div>
-                    </div>
-                </div>
-                <div class="text-xs text-gray-400 font-mono">PING: 28ms</div>
-            </button>
         </section>
 
         <!-- Shortcut Buttons -->
@@ -346,23 +238,114 @@
             </div>
         </section>
 
-        <!-- Footer -->
         <footer class="py-2 bg-black/90 text-center border-t border-white/5">
-            <p class="text-[9px] text-gray-600 uppercase tracking-widest">Encrypted Connection • Version 4.5.1</p>
+            <p class="text-[9px] text-gray-600 uppercase tracking-widest">Encrypted Connection • Version 5.0.0</p>
         </footer>
 
     </main>
 
     <script>
+        // =================================================================
+        // >>> PENGATURAN SERVER (UBAH BAGIAN INI SAJA) <<<
+        // =================================================================
+        
+        // Pilih Server mana yang jadi REKOMENDASI / VIP (1, 2, atau 3)
+        // Saat ini diset ke 3 (NX303) sesuai permintaan.
+        const VIP_SERVER_ID = 3; 
+
+        const SERVER_DATA = [
+            {
+                id: 1,
+                name: "RUTE303",
+                url: "https://rute303-top.rest/?ref=jannbz"
+            },
+            {
+                id: 2,
+                name: "IBLBET",
+                url: "https://iblhos.com/?ref=apkgacor"
+            },
+            {
+                id: 3,
+                name: "NX303",
+                url: "https://nx303asek.xyz/?ref=apkgacor"
+            }
+        ];
+
+        // =================================================================
+        // >>> AKHIR PENGATURAN (JANGAN UBAH DI BAWAH SINI) <<<
+        // =================================================================
+
         document.addEventListener('DOMContentLoaded', () => {
             const consoleLog = document.getElementById('console-log');
+            const toggles = document.querySelectorAll('.toggle-checkbox');
+            
+            // --- 1. RENDER SERVER BUTTONS SECARA DINAMIS ---
+            function renderServers() {
+                SERVER_DATA.forEach(server => {
+                    const container = document.getElementById(`server-container-${server.id}`);
+                    if (!container) return;
+
+                    const isVip = (server.id === VIP_SERVER_ID);
+                    
+                    let htmlContent = '';
+
+                    if (isVip) {
+                        // TAMPILAN VIP (REKOMENDASI)
+                        htmlContent = `
+                            <div class="relative group">
+                                <div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                                <button class="server-btn btn-vip relative w-full p-4 rounded-lg flex items-center justify-between group-hover:scale-[1.01]"
+                                        data-name="${server.name}"
+                                        data-url="${server.url}">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="p-2 bg-white/10 rounded-lg">
+                                            <svg class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        </div>
+                                        <div class="text-left">
+                                            <div class="font-bold text-lg leading-none">${server.name}</div>
+                                            <div class="text-[10px] text-purple-200 mt-1 uppercase tracking-wider">Server Utama (VIP)</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-xs text-emerald-300 font-mono">PING: 12ms</div>
+                                        <div class="w-2 h-2 bg-emerald-400 rounded-full ml-auto mt-1 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
+                                    </div>
+                                </button>
+                            </div>
+                        `;
+                    } else {
+                        // TAMPILAN STANDARD
+                        htmlContent = `
+                            <button class="server-btn btn-standard w-full p-3 rounded-lg flex items-center justify-between"
+                                    data-name="${server.name}"
+                                    data-url="${server.url}">
+                                <div class="flex items-center space-x-3">
+                                    <div class="p-2 bg-gray-800 rounded-lg text-gray-400">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="font-bold text-gray-200">${server.name}</div>
+                                        <div class="text-[10px] text-gray-500 uppercase">Server Cadangan</div>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-gray-400 font-mono">PING: 24ms</div>
+                            </button>
+                        `;
+                    }
+
+                    container.innerHTML = htmlContent;
+                });
+            }
+
+            renderServers(); // Jalankan fungsi render saat load
+
+            // --- 2. LOGIC TOMBOL & AKTIVASI (SAMA SEPERTI SEBELUMNYA) ---
             const serverButtons = document.querySelectorAll('.server-btn');
             const shortcutButtons = document.querySelectorAll('.shortcut-btn');
             const onlineUsersEl = document.getElementById('online-users');
             const successRateEl = document.getElementById('success-rate');
-            const toggles = document.querySelectorAll('.toggle-checkbox');
-            
-            // --- COLLAPSIBLE SETTINGS LOGIC ---
+
+            // Toggle Panel Logic
             const toggleConfigBtn = document.getElementById('toggle-config-btn');
             const configContent = document.getElementById('config-content');
             const configChevron = document.getElementById('config-chevron');
@@ -371,23 +354,21 @@
             toggleConfigBtn.addEventListener('click', () => {
                 isConfigOpen = !isConfigOpen;
                 if(isConfigOpen) {
-                    // Buka
                     configContent.classList.remove('max-h-0', 'opacity-0');
-                    configContent.classList.add('max-h-96', 'opacity-100'); // max-h-96 cukup untuk konten
+                    configContent.classList.add('max-h-96', 'opacity-100');
                     configChevron.classList.add('rotate-180');
                     addLog('System Configuration panel accessed.', 'info');
                 } else {
-                    // Tutup
                     configContent.classList.remove('max-h-96', 'opacity-100');
                     configContent.classList.add('max-h-0', 'opacity-0');
                     configChevron.classList.remove('rotate-180');
                 }
             });
 
-            // --- FUNGSI GIMIK LIVE STATS ---
+            // Live Stats (Gimik)
             setInterval(() => {
                 let currentUsers = parseInt(onlineUsersEl.textContent.replace(/,/g, ''));
-                let change = Math.floor(Math.random() * 10) - 4; // -4 sampai +5
+                let change = Math.floor(Math.random() * 10) - 4;
                 let newUsers = currentUsers + change;
                 if(newUsers < 1000) newUsers = 1000;
                 onlineUsersEl.textContent = newUsers.toLocaleString();
@@ -399,7 +380,7 @@
                 }
             }, 2000);
 
-            // --- FUNGSI LOGGING ---
+            // Logger
             function addLog(text, type = 'info') {
                 const p = document.createElement('p');
                 let prefix = '>';
@@ -421,11 +402,10 @@
                 return now.toLocaleTimeString('id-ID', {hour12: false, hour: '2-digit', minute:'2-digit', second:'2-digit'});
             }
 
-            // --- EVENT LISTENER UNTUK SETTINGS (GIMIK) ---
+            // Setting Toggle Listener
             toggles.forEach(toggle => {
                 toggle.addEventListener('change', (e) => {
                     const settingRow = e.target.closest('.flex') || e.target.closest('.col-span-2');
-                    // Mencari text label, bisa di dalam span biasa atau div
                     let featureName = "";
                     const labelSpan = settingRow.querySelector('span.text-\\[10px\\]') || settingRow.querySelector('span.text-\\[11px\\]');
                     if (labelSpan) featureName = labelSpan.textContent.replace('⚠️ ', '');
@@ -448,10 +428,12 @@
                 });
             });
 
-            // --- PROSES AKTIVASI ---
+            // Activation Logic
             function activateServer(name, url) {
-                // Disable controls
-                serverButtons.forEach(btn => {
+                // Re-select server buttons in case they were re-rendered
+                const currentButtons = document.querySelectorAll('.server-btn');
+                
+                currentButtons.forEach(btn => {
                     btn.disabled = true;
                     btn.style.opacity = '0.5';
                     btn.style.cursor = 'not-allowed';
@@ -459,20 +441,17 @@
                 shortcutButtons.forEach(btn => btn.style.pointerEvents = 'none');
                 toggles.forEach(t => t.disabled = true);
                 
-                // Close config if open during activation
                 if(isConfigOpen) {
                      configContent.classList.remove('max-h-96', 'opacity-100');
                      configContent.classList.add('max-h-0', 'opacity-0');
                      configChevron.classList.remove('rotate-180');
                      isConfigOpen = false;
                 }
-                toggleConfigBtn.disabled = true; // Disable toggle button
+                toggleConfigBtn.disabled = true;
 
-                // Sequence
-                consoleLog.innerHTML = ''; // Clear log
+                consoleLog.innerHTML = '';
                 addLog(`Target locked: ${name}`, 'process');
                 
-                // Cek settingan yang aktif
                 let activeSettings = [];
                 if(document.getElementById('toggle-antiban').checked) activeSettings.push("Anti-Ban");
                 if(document.getElementById('toggle-winrate').checked) activeSettings.push("High-Winrate");
@@ -481,7 +460,6 @@
                 
                 if(activeSettings.length > 0) {
                      setTimeout(() => addLog(`Loading modules: ${activeSettings.join(', ')}...`, 'setting'), 500);
-                     
                      if(activeSettings.includes("SUPER-HACK")) {
                          setTimeout(() => addLog('Injecting MALICIOUS SCATTER CODE...', 'danger'), 1200);
                      }
@@ -496,7 +474,6 @@
                     addLog('Redirecting to secure server...', 'info');
                 }, 6000);
 
-                // --- SECURITY FIX: Redirect ---
                 setTimeout(() => {
                     try {
                         const a = document.createElement('a');
@@ -507,19 +484,29 @@
                         document.body.removeChild(a);
                     } catch (e) {
                         addLog('Auto-redirect failed. Please click manually.', 'error');
-                        serverButtons.forEach(btn => { btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer'; });
+                        currentButtons.forEach(btn => { btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer'; });
                     }
                 }, 8000);
             }
 
-            // --- EVENT LISTENERS SERVER ---
-            serverButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const name = btn.dataset.name;
-                    const url = btn.dataset.url;
-                    activateServer(name, url);
+            // Bind click events to dynamically created buttons
+            const containers = [
+                document.getElementById('server-container-1'),
+                document.getElementById('server-container-2'),
+                document.getElementById('server-container-3')
+            ];
+
+            containers.forEach(container => {
+                container.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.server-btn');
+                    if(btn) {
+                        const name = btn.dataset.name;
+                        const url = btn.dataset.url;
+                        activateServer(name, url);
+                    }
                 });
             });
+
         });
     </script>
 </body>
