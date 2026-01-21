@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Injector V6.1 - Secret Key</title>
+    <title>Server Injector V7.0 - Game Specific</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Google Font -->
@@ -149,7 +149,7 @@
         <header class="p-6 pb-2 text-center border-b border-white/5 relative">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
             <h1 class="text-3xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 text-glow">
-                INJECTOR V6.1
+                INJECTOR V7.0
             </h1>
             <p class="text-xs text-gray-400 tracking-[0.2em] mt-1">SECURE GATEWAY PROTOCOL</p>
         </header>
@@ -179,18 +179,6 @@
             
             <div id="config-content" class="grid grid-cols-2 gap-3 overflow-hidden transition-all duration-300 max-h-0 opacity-0">
                 
-                <!-- LOCKED ITEMS -->
-                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
-                    <div class="flex items-center gap-1">
-                        <span class="text-[10px] text-gray-400 font-mono tracking-tight">ANTI-BAN PRO</span>
-                        <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-antiban" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
-                        <label for="toggle-antiban" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
-                    </div>
-                </div>
-
                 <!-- UNLOCKED ITEM (HIGH WINRATE AI) -->
                 <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
                     <span class="text-[10px] text-gray-300 font-mono tracking-tight">HIGH WINRATE AI</span>
@@ -200,29 +188,67 @@
                     </div>
                 </div>
 
-                <!-- LOCKED ITEMS -->
+                <!-- LOCKED: ZEUS X500 LOCKER -->
                 <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
                     <div class="flex items-center gap-1">
-                        <span class="text-[10px] text-gray-400 font-mono tracking-tight">BYPASS IP v2</span>
+                        <span class="text-[10px] text-yellow-500 font-mono tracking-tight">ZEUS x500 LOCKER</span>
                         <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
                     </div>
                     <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-bypass" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
-                        <label for="toggle-bypass" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
+                        <input type="checkbox" id="toggle-zeus" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
+                        <label for="toggle-zeus" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
                     </div>
                 </div>
 
-                 <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
+                <!-- LOCKED: MAHJONG BLACK SCATTER -->
+                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
                     <div class="flex items-center gap-1">
-                        <span class="text-[10px] text-gray-400 font-mono tracking-tight">TURBO MODE</span>
+                        <span class="text-[10px] text-red-400 font-mono tracking-tight">MAHJONG SCATTER</span>
                         <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
                     </div>
                     <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-turbo" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
-                        <label for="toggle-turbo" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
+                        <input type="checkbox" id="toggle-mahjong" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
+                        <label for="toggle-mahjong" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
                     </div>
                 </div>
 
+                <!-- LOCKED: RTP INJECTOR V5 -->
+                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
+                    <div class="flex items-center gap-1">
+                        <span class="text-[10px] text-blue-400 font-mono tracking-tight">RTP INJECTOR V5</span>
+                        <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="relative inline-block w-10 align-middle select-none">
+                        <input type="checkbox" id="toggle-rtp" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
+                        <label for="toggle-rtp" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
+                    </div>
+                </div>
+
+                <!-- LOCKED: BONANZA BOMB SENSOR -->
+                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
+                    <div class="flex items-center gap-1">
+                        <span class="text-[10px] text-pink-400 font-mono tracking-tight">BONANZA SENSOR</span>
+                        <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="relative inline-block w-10 align-middle select-none">
+                        <input type="checkbox" id="toggle-bonanza" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
+                        <label for="toggle-bonanza" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
+                    </div>
+                </div>
+
+                <!-- LOCKED: AUTO BUY SPIN -->
+                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
+                    <div class="flex items-center gap-1">
+                        <span class="text-[10px] text-green-400 font-mono tracking-tight">AUTO BUY SPIN</span>
+                        <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="relative inline-block w-10 align-middle select-none">
+                        <input type="checkbox" id="toggle-autobuy" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
+                        <label for="toggle-autobuy" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
+                    </div>
+                </div>
+
+                <!-- LOCKED: SUPER SCATTER HACK (Full Width) -->
                 <div class="col-span-2 bg-red-900/10 p-2 rounded border border-red-500/10 flex items-center justify-between locked-item">
                     <div class="flex items-center gap-2">
                         <span class="text-red-800">⚠️</span>
@@ -242,7 +268,6 @@
                     <h3 class="text-[10px] text-yellow-500 font-bold mb-2 font-mono tracking-widest">UNLOCK PREMIUM FEATURES</h3>
                     
                     <div class="flex gap-2 mb-2">
-                        <!-- PLACEHOLDER DIGANTI -->
                         <input type="text" id="premium-key-input" placeholder="ENTER PREMIUM KEY" 
                                class="w-full bg-black/40 border border-white/10 rounded px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-yellow-500 uppercase tracking-widest placeholder-gray-600">
                         <button id="verify-key-btn" class="bg-yellow-600 hover:bg-yellow-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors font-mono">
@@ -301,7 +326,7 @@
         </section>
 
         <footer class="py-2 bg-black/90 text-center border-t border-white/5">
-            <p class="text-[9px] text-gray-600 uppercase tracking-widest">Encrypted Connection • Version 6.1.0</p>
+            <p class="text-[9px] text-gray-600 uppercase tracking-widest">Encrypted Connection • Version 7.0.0</p>
         </footer>
 
     </main>
@@ -314,7 +339,7 @@
         // 1. PENGATURAN LINK SERVER (Direct Link)
         const LINK_SERVER_1 = "https://rute303-top.rest/?ref=jannbz";
         const LINK_SERVER_2 = "https://iblhos.com/?ref=apkgacor";
-        const LINK_SERVER_3 = "https://nx303boy.xyz/?ref=apkgacor";
+        const LINK_SERVER_3 = "https://nx303asek.xyz/?ref=apkgacor";
 
         // 2. NAMA SERVER
         const NAMA_SERVER_1 = "RUTE303";
@@ -576,9 +601,13 @@
                 addLog(`Target locked: ${name}`, 'process');
                 
                 let activeSettings = [];
-                if(document.getElementById('toggle-antiban').checked) activeSettings.push("Anti-Ban");
+                // UPDATE SETTINGS CHECK HERE
                 if(document.getElementById('toggle-winrate').checked) activeSettings.push("High-Winrate");
-                if(document.getElementById('toggle-turbo').checked) activeSettings.push("Turbo-Mode");
+                if(document.getElementById('toggle-zeus').checked) activeSettings.push("Zeus-Locker");
+                if(document.getElementById('toggle-mahjong').checked) activeSettings.push("Mahjong-Scatter");
+                if(document.getElementById('toggle-rtp').checked) activeSettings.push("RTP-Inject");
+                if(document.getElementById('toggle-bonanza').checked) activeSettings.push("Bonanza-Sensor");
+                if(document.getElementById('toggle-autobuy').checked) activeSettings.push("Auto-Buy");
                 if(document.getElementById('toggle-super-scatter').checked) activeSettings.push("SUPER-HACK");
                 
                 if(activeSettings.length > 0) {
