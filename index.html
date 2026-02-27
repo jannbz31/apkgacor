@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Injector V7.0 - Game Specific</title>
+    <title>Server Injector V7.0 - Final Edition</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Google Font -->
@@ -21,7 +21,7 @@
         
         /* --- ANIMATED BACKGROUND --- */
         .bg-animate {
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
+            background: linear-gradient(-45deg, #050505, #1e1b4b, #0c0a09, #050505);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             position: fixed;
@@ -35,107 +35,120 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Grid Overlay */
         .grid-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
             background-size: 30px 30px;
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- GLASSMORPHISM PANEL --- */
         .glass-panel {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
         }
 
-        /* --- TOMBOL --- */
-        .btn-vip {
-            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+        /* --- CONFIG BUTTON ANIMATION --- */
+        .btn-config-eye-catching {
+            background: linear-gradient(90deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.25));
+            border: 1px solid rgba(139, 92, 246, 0.6);
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(139, 92, 246, 0.5);
-            box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
         }
-        
-        .btn-vip::before {
+
+        .btn-config-eye-catching::before {
             content: '';
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: lightSlide 4s infinite;
+        }
+
+        @keyframes lightSlide {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* --- BUTTONS --- */
+        .btn-vip {
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
         }
         
-        .btn-vip:hover::before {
-            left: 100%;
-        }
-
         .btn-vip:hover {
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.7);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.7);
             transform: translateY(-2px);
-            border-color: #a78bfa;
         }
 
-        .btn-standard {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.2s ease;
-        }
-        .btn-standard:hover {
-            background: rgba(51, 65, 85, 0.9);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateX(5px);
+        .btn-buy-now {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            color: #000;
+            font-weight: 800;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+            transition: 0.3s;
         }
 
-        /* --- TEXT EFFECTS --- */
-        .text-glow {
-            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        /* Custom Toggle */
+        .toggle-checkbox { display: none; }
+        .toggle-label { width: 34px; height: 18px; background-color: #334155; border-radius: 9999px; position: relative; cursor: pointer; transition: 0.3s; display: block; }
+        .toggle-label:after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; background-color: white; border-radius: 50%; transition: 0.3s; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #10b981; }
+        .toggle-checkbox:checked + .toggle-label:after { transform: translateX(16px); }
+
+        .locked-item { opacity: 0.45; filter: grayscale(0.8); transition: 0.3s; }
+        .premium-badge { font-size: 7px; background: #f59e0b; color: #000; padding: 1px 4px; border-radius: 2px; font-weight: 900; }
+
+        /* --- FINAL ACTION WINDOW (HACKER GIMMICK) --- */
+        #hacker-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000;
+            z-index: 100;
+            display: none;
+            padding: 20px;
+            overflow: hidden;
         }
-        .font-mono { font-family: 'Space Mono', monospace; }
-        .terminal-scroll::-webkit-scrollbar { width: 4px; }
-        .terminal-scroll::-webkit-scrollbar-track { background: #000; }
-        .terminal-scroll::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 2px; }
+
+        .hacker-text {
+            color: #00ff41;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            line-height: 1.4;
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 4px;
+            background: #003b11;
+            border-radius: 2px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: #00ff41;
+            box-shadow: 0 0 10px #00ff41;
+            transition: width 0.1s linear;
+        }
 
         @keyframes statusPulse {
             0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
             70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
             100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
         }
-        .status-dot-active { animation: statusPulse 2s infinite; }
-
-        /* Custom Toggle Switch */
-        .toggle-checkbox:checked { right: 0; border-color: #34d399; }
-        .toggle-checkbox:checked + .toggle-label { background-color: #34d399; }
-        
-        .toggle-label { width: 36px; height: 20px; background-color: #374151; border-radius: 9999px; position: relative; cursor: pointer; transition: background-color 0.2s ease-in; }
-        .toggle-label:after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background-color: white; border-radius: 50%; transition: transform 0.2s ease-in; }
-        .toggle-checkbox:checked + .toggle-label:after { transform: translateX(100%); }
-        
-        .toggle-checkbox.super-hack:checked { border-color: #ef4444; }
-        .toggle-checkbox.super-hack:checked + .toggle-label { background-color: #ef4444; }
-
-        /* Disabled State for Locked Toggles */
-        .toggle-checkbox:disabled + .toggle-label { 
-            background-color: #1f2937; /* darker gray */
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-        .toggle-checkbox:disabled + .toggle-label:after {
-            background-color: #4b5563;
-        }
-
-        .locked-item {
-            opacity: 0.6;
-        }
-
+        .active-dot { animation: statusPulse 2s infinite; }
     </style>
 </head>
 <body class="text-white flex items-start justify-center min-h-screen py-10 px-4">
@@ -143,525 +156,364 @@
     <div class="bg-animate"></div>
     <div class="grid-overlay"></div>
 
-    <main class="w-full max-w-md glass-panel rounded-2xl overflow-hidden relative z-10 mb-10">
+    <!-- MAIN DASHBOARD -->
+    <main id="main-dashboard" class="w-full max-w-md glass-panel rounded-3xl overflow-hidden relative z-10 mb-10 transition-opacity duration-500">
         
         <!-- Header -->
-        <header class="p-6 pb-2 text-center border-b border-white/5 relative">
+        <header class="p-6 pb-4 text-center border-b border-white/5 relative">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
-            <h1 class="text-3xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 text-glow">
+            <h1 class="text-3xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
                 INJECTOR V7.0
             </h1>
-            <p class="text-xs text-gray-400 tracking-[0.2em] mt-1">SECURE GATEWAY PROTOCOL</p>
+            <p class="text-[9px] text-gray-500 font-mono tracking-[0.5em] mt-1 uppercase">Ultimate Protocol Access</p>
         </header>
 
-        <!-- Stats -->
-        <div class="flex justify-between items-center px-6 py-3 bg-black/20 border-b border-white/5 text-xs font-mono">
+        <!-- Stats Bar -->
+        <div class="flex justify-between items-center px-6 py-3 bg-black/40 border-b border-white/5 text-[10px] font-mono">
             <div class="flex items-center space-x-2 text-emerald-400">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full status-dot-active"></span>
-                <span>ONLINE: <span id="online-users" class="font-bold">1,240</span></span>
+                <span class="w-2 h-2 bg-emerald-500 rounded-full active-dot"></span>
+                <span>ACTIVE NODES: <span id="online-users" class="font-bold">1,402</span></span>
             </div>
-            <div class="text-purple-300">SUCCESS RATE: <span id="success-rate" class="font-bold">98.5%</span></div>
+            <div class="text-purple-400">STATUS: <span class="font-bold text-emerald-400">SECURE</span></div>
         </div>
 
-        <!-- Settings Panel -->
-        <section class="px-6 pt-4 pb-2">
-            <button id="toggle-config-btn" class="w-full flex items-center justify-between mb-2 focus:outline-none group">
-                <div class="flex items-center gap-2">
-                    <svg class="w-3 h-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        <!-- System Configuration (Expandable) -->
+        <section class="px-6 pt-6 pb-2">
+            <button id="toggle-config-btn" class="btn-config-eye-catching w-full flex items-center justify-between p-4 rounded-2xl focus:outline-none group">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <svg class="w-6 h-6 text-purple-400 group-hover:rotate-180 transition-transform duration-1000" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-500"></span>
+                        </span>
+                    </div>
                     <div class="text-left">
-                        <h2 class="text-[10px] font-bold text-gray-400 tracking-widest font-mono group-hover:text-white transition-colors">SYSTEM CONFIGURATION</h2>
-                        <span class="text-[9px] text-purple-400 animate-pulse font-mono block leading-none mt-0.5">▼ KLIK UNTUK BUKA PENGATURAN ▼</span>
+                        <h2 class="text-sm font-black text-white tracking-widest uppercase">System Configuration</h2>
+                        <span id="config-hint" class="text-[9px] text-purple-400 font-mono block animate-pulse mt-0.5">MODUL PREMIUM DIBAWAH SINI</span>
                     </div>
                 </div>
-                <div class="h-px bg-white/10 flex-grow mx-4 group-hover:bg-purple-500/50 transition-colors"></div>
-                <svg id="config-chevron" class="w-3 h-3 text-gray-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <svg id="config-chevron" class="w-5 h-5 text-purple-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             
-            <div id="config-content" class="grid grid-cols-2 gap-3 overflow-hidden transition-all duration-300 max-h-0 opacity-0">
+            <!-- Menu Dropdown -->
+            <div id="config-content" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mt-4 space-y-3">
                 
-                <!-- UNLOCKED ITEM (HIGH WINRATE AI) -->
-                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between">
-                    <span class="text-[10px] text-gray-300 font-mono tracking-tight">HIGH WINRATE AI</span>
-                    <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-winrate" class="toggle-checkbox absolute block w-5 h-5 hidden"/>
-                        <label for="toggle-winrate" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-700"></label>
+                <!-- FITUR STANDAR -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between">
+                        <span class="text-[10px] text-gray-300 font-mono">HIGH WINRATE AI</span>
+                        <input type="checkbox" id="toggle-winrate" class="toggle-checkbox"/>
+                        <label for="toggle-winrate" class="toggle-label"></label>
                     </div>
-                </div>
 
-                <!-- LOCKED: ZEUS X500 LOCKER -->
-                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
-                    <div class="flex items-center gap-1">
-                        <span class="text-[10px] text-yellow-500 font-mono tracking-tight">ZEUS x500 LOCKER</span>
-                        <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-zeus" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
-                        <label for="toggle-zeus" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
-                    </div>
-                </div>
-
-                <!-- LOCKED: MAHJONG BLACK SCATTER -->
-                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
-                    <div class="flex items-center gap-1">
-                        <span class="text-[10px] text-red-400 font-mono tracking-tight">MAHJONG SCATTER</span>
-                        <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-mahjong" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
-                        <label for="toggle-mahjong" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
-                    </div>
-                </div>
-
-                <!-- LOCKED: RTP INJECTOR V5 -->
-                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
-                    <div class="flex items-center gap-1">
-                        <span class="text-[10px] text-blue-400 font-mono tracking-tight">RTP INJECTOR V5</span>
-                        <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-rtp" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
-                        <label for="toggle-rtp" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
-                    </div>
-                </div>
-
-                <!-- LOCKED: BONANZA BOMB SENSOR -->
-                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
-                    <div class="flex items-center gap-1">
-                        <span class="text-[10px] text-pink-400 font-mono tracking-tight">BONANZA SENSOR</span>
-                        <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-bonanza" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
-                        <label for="toggle-bonanza" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
-                    </div>
-                </div>
-
-                <!-- LOCKED: AUTO BUY SPIN -->
-                <div class="bg-black/30 p-2 rounded border border-white/5 flex items-center justify-between locked-item">
-                    <div class="flex items-center gap-1">
-                        <span class="text-[10px] text-green-400 font-mono tracking-tight">AUTO BUY SPIN</span>
-                        <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-autobuy" class="toggle-checkbox premium-feature absolute block w-5 h-5 hidden" disabled/>
-                        <label for="toggle-autobuy" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
-                    </div>
-                </div>
-
-                <!-- LOCKED: SUPER SCATTER HACK (Full Width) -->
-                <div class="col-span-2 bg-red-900/10 p-2 rounded border border-red-500/10 flex items-center justify-between locked-item">
-                    <div class="flex items-center gap-2">
-                        <span class="text-red-800">⚠️</span>
+                    <!-- FITUR PREMIUM -->
+                    <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between locked-item">
                         <div class="flex items-center gap-1">
-                            <span class="text-[11px] text-red-800 font-mono tracking-wider font-bold">SUPER SCATTER HACK</span>
-                            <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                            <span class="text-[10px] text-yellow-500 font-mono">ZEUS LOCKER</span>
+                            <span class="premium-badge">VIP</span>
+                        </div>
+                        <input type="checkbox" id="toggle-zeus" class="toggle-checkbox premium-feature" disabled/>
+                        <label for="toggle-zeus" class="toggle-label"></label>
+                    </div>
+
+                    <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between locked-item">
+                        <div class="flex items-center gap-1">
+                            <span class="text-[10px] text-red-500 font-mono">SCATTER HACK</span>
+                            <span class="premium-badge">VIP</span>
+                        </div>
+                        <input type="checkbox" id="toggle-mahjong" class="toggle-checkbox premium-feature" disabled/>
+                        <label for="toggle-mahjong" class="toggle-label"></label>
+                    </div>
+
+                    <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between locked-item">
+                        <div class="flex items-center gap-1">
+                            <span class="text-[10px] text-blue-400 font-mono">RTP INJECTOR</span>
+                            <span class="premium-badge">VIP</span>
+                        </div>
+                        <input type="checkbox" id="toggle-rtp" class="toggle-checkbox premium-feature" disabled/>
+                        <label for="toggle-rtp" class="toggle-label"></label>
+                    </div>
+
+                    <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between locked-item">
+                        <div class="flex items-center gap-1">
+                            <span class="text-[10px] text-cyan-400 font-mono">JP PREDICTOR</span>
+                            <span class="premium-badge">NEW</span>
+                        </div>
+                        <input type="checkbox" id="toggle-jp" class="toggle-checkbox premium-feature" disabled/>
+                        <label for="toggle-jp" class="toggle-label"></label>
+                    </div>
+
+                    <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between locked-item">
+                        <div class="flex items-center gap-1">
+                            <span class="text-[10px] text-emerald-400 font-mono">STEALTH PROXY</span>
+                            <span class="premium-badge">VIP</span>
+                        </div>
+                        <input type="checkbox" id="toggle-proxy" class="toggle-checkbox premium-feature" disabled/>
+                        <label for="toggle-proxy" class="toggle-label"></label>
+                    </div>
+
+                    <div class="col-span-2 bg-red-900/10 p-3 rounded-xl border border-red-500/20 flex items-center justify-between locked-item">
+                        <div class="flex items-center gap-2">
+                            <span class="text-red-500 animate-pulse text-xs">⚠️</span>
+                            <div class="flex items-center gap-1">
+                                <span class="text-[10px] text-red-500 font-black font-mono tracking-wider">INSTANT MAXWIN PROTOCOL</span>
+                                <span class="premium-badge bg-red-600">GOD</span>
+                            </div>
+                        </div>
+                        <input type="checkbox" id="toggle-maxwin" class="toggle-checkbox premium-feature" disabled/>
+                        <label for="toggle-maxwin" class="toggle-label"></label>
+                    </div>
+                </div>
+
+                <!-- VERIFICATION SECTION -->
+                <div class="pt-4 border-t border-white/10">
+                    <h3 class="text-[10px] text-yellow-500 font-bold font-mono tracking-widest mb-2 uppercase">Input Verification Key</h3>
+                    <div class="flex gap-2">
+                        <input type="text" id="premium-key-input" placeholder="MASUKKAN KODE PREMIUM" class="flex-1 bg-black/60 border border-white/10 rounded-xl px-4 py-2 text-xs font-mono text-white focus:outline-none focus:border-yellow-500 uppercase tracking-widest">
+                        <button id="verify-key-btn" class="bg-white/10 hover:bg-white/20 text-white text-[10px] font-bold px-4 rounded-xl transition-all border border-white/10 uppercase font-mono">VERIFY</button>
+                    </div>
+                </div>
+
+                <!-- ORDER PREMIUM SECTION -->
+                <div class="mt-4 p-4 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-transparent border border-yellow-500/30">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-left">
+                            <span class="text-[9px] text-yellow-500 font-mono block uppercase tracking-widest">Premium Plan</span>
+                            <h4 class="text-xl font-black text-white italic">FULL ACCESS V7</h4>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-gray-400 block line-through">Rp 250.000</span>
+                            <span class="text-lg text-yellow-500 font-black">Rp 100.000</span>
                         </div>
                     </div>
-                    <div class="relative inline-block w-10 align-middle select-none">
-                        <input type="checkbox" id="toggle-super-scatter" class="toggle-checkbox super-hack premium-feature absolute block w-5 h-5 hidden" disabled/>
-                        <label for="toggle-super-scatter" class="toggle-label block overflow-hidden h-5 rounded-full"></label>
-                    </div>
-                </div>
-
-                <!-- PREMIUM KEY SECTION -->
-                <div class="col-span-2 mt-2 border-t border-white/10 pt-3">
-                    <h3 class="text-[10px] text-yellow-500 font-bold mb-2 font-mono tracking-widest">UNLOCK PREMIUM FEATURES</h3>
                     
-                    <div class="flex gap-2 mb-2">
-                        <input type="text" id="premium-key-input" placeholder="ENTER PREMIUM KEY" 
-                               class="w-full bg-black/40 border border-white/10 rounded px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-yellow-500 uppercase tracking-widest placeholder-gray-600">
-                        <button id="verify-key-btn" class="bg-yellow-600 hover:bg-yellow-500 text-white text-[10px] font-bold px-3 py-1 rounded transition-colors font-mono">
-                            VERIFY
-                        </button>
-                    </div>
-
-                    <div class="flex items-center justify-between">
-                        <span class="text-[9px] text-gray-400">Harga Premium Key: <span class="text-yellow-400 font-bold">Rp 100.000</span></span>
-                        
-                        <a href="https://wa.me/6285883607933?text=request%20premium%20key" target="_blank" 
-                           class="flex items-center gap-1 bg-green-600/20 hover:bg-green-600/40 text-green-400 text-[9px] px-2 py-1 rounded border border-green-500/30 transition-all">
-                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                            Request Key
-                        </a>
-                    </div>
+                    <a href="https://wa.me/6285883607933?text=Halo%20Admin,%20saya%20ingin%20beli%20Premium%20Key%20V7%20seharga%20100rb" target="_blank" 
+                       class="btn-buy-now w-full py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-tighter shadow-lg">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Beli Premium Key (WhatsApp)
+                    </a>
                 </div>
-
             </div>
         </section>
 
-        <!-- Server Selection (Diisi oleh JS) -->
-        <section class="p-6 space-y-4 pt-2">
-            <h2 class="text-[10px] font-bold text-gray-400 tracking-widest font-mono mb-2">SELECT TARGET SERVER</h2>
-            
+        <!-- Server Selection -->
+        <section class="p-6 space-y-4 pt-0">
+            <h2 class="text-[10px] font-bold text-gray-500 tracking-widest font-mono mb-2 uppercase">Target Vector Server</h2>
             <div id="server-container-1"></div>
             <div id="server-container-2"></div>
             <div id="server-container-3"></div>
-
-        </section>
-
-        <!-- Shortcut Buttons -->
-        <div class="px-6 pb-2 flex gap-3">
-            <a href="https://wa.me/6285883607933" target="_top" class="shortcut-btn flex-1 py-2 text-center text-xs font-bold text-white bg-green-600/80 hover:bg-green-500 rounded transition border border-green-500/50">
-                <span class="inline-block mr-1">💬</span> ADMIN WA
-            </a>
-            <a href="https://s.id/lagihoki" target="_top" class="shortcut-btn flex-1 py-2 text-center text-xs font-bold text-gray-300 bg-gray-700/50 hover:bg-gray-600 rounded transition border border-gray-600/50">
-                <span class="inline-block mr-1">🔄</span> RESET SYSTEM
-            </a>
-        </div>
-
-        <!-- Terminal Console -->
-        <section class="p-4 bg-black/80 border-t border-white/10">
-            <div class="flex justify-between items-center mb-2">
-                <label class="text-[10px] font-bold text-gray-500 font-mono">SYSTEM LOGS</label>
-                <div class="flex space-x-1">
-                    <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
-                    <div class="w-2 h-2 rounded-full bg-yellow-500/50"></div>
-                    <div class="w-2 h-2 rounded-full bg-green-500/50"></div>
-                </div>
-            </div>
-            <div id="console-log" class="terminal-scroll h-32 overflow-y-auto font-mono text-[11px] text-green-500/90 leading-relaxed">
-                <p>> System initialized...</p>
-                <p>> Waiting for user input...</p>
-            </div>
         </section>
 
         <footer class="py-2 bg-black/90 text-center border-t border-white/5">
-            <p class="text-[9px] text-gray-600 uppercase tracking-widest">Encrypted Connection • Version 7.0.0</p>
+            <p class="text-[8px] text-gray-700 uppercase tracking-[0.4em] font-mono">Encrypted Connection • V7.0.5 FINAL</p>
         </footer>
 
     </main>
 
+    <!-- HACKER REDIRECTION OVERLAY -->
+    <div id="hacker-overlay">
+        <div class="h-full flex flex-col">
+            <div class="flex-1 overflow-hidden" id="hacker-console-content">
+                <!-- Lines of code will be injected here -->
+            </div>
+            <div class="mt-4 border-t border-green-900 pt-4">
+                <div class="flex justify-between items-end mb-1">
+                    <span class="hacker-text text-lg font-bold" id="hacker-status-msg">INITIALIZING INJECTION...</span>
+                    <span class="hacker-text" id="hacker-percent">0%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="hacker-progress-bar"></div>
+                </div>
+                <div class="hacker-text text-[9px] mt-2 opacity-50 uppercase tracking-[2px]">
+                    Cipher: AES-XTS | Target: <span id="target-display">NONE</span> | Mode: Infiltration
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // =================================================================
-        // >>> KONFIGURASI UTAMA (UBAH DISINI) <<<
-        // =================================================================
-        
-        // 1. PENGATURAN LINK SERVER (Direct Link)
-        const LINK_SERVER_1 = "https://rute303-ayo.shop/?ref=jannbz";
-        const LINK_SERVER_2 = "https://iblalternatif14.site/?ref=apkgacor";
-        const LINK_SERVER_3 = "https://nx303nay.live/?ref=apkgacor";
+        // --- CONFIG ---
+        const SERVERS = [
+            { id: 1, name: "RUTE303", url: "https://rute303-ayo.shop/?ref=jannbz", isVip: false },
+            { id: 2, name: "IBLBET", url: "https://iblalternatif14.site/?ref=apkgacor", isVip: true },
+            { id: 3, name: "NX303", url: "https://nx303nay.live/?ref=apkgacor", isVip: false }
+        ];
 
-        // 2. NAMA SERVER
-        const NAMA_SERVER_1 = "RUTE303";
-        const NAMA_SERVER_2 = "IBLBET";
-        const NAMA_SERVER_3 = "NX303";
-
-        // 3. PILIH SERVER VIP / REKOMENDASI (Isi dengan 1, 2, atau 3)
-        // Saat ini diset ke 3 (NX303)
-        const VIP_SERVER_ID = 2; 
-
-        // =================================================================
-        // >>> AKHIR PENGATURAN (JANGAN UBAH DI BAWAH SINI) <<<
-        // =================================================================
-
-        // Menyusun Data untuk sistem
-        const SERVER_DATA = [
-            { id: 1, name: NAMA_SERVER_1, url: LINK_SERVER_1 },
-            { id: 2, name: NAMA_SERVER_2, url: LINK_SERVER_2 },
-            { id: 3, name: NAMA_SERVER_3, url: LINK_SERVER_3 }
+        // RELATABLE HACKER LOGS
+        const RELATABLE_LOGS = [
+            "CONNECTING_TO_SLOT_DATABASE_v4.2...",
+            "BYPASSING_RNG_ALGORITHM_SEED_72x...",
+            "SPOOFING_IP_ADDRESS_LOC:SG_SERVER_01",
+            "INJECTING_SCATTER_PACKET_OVERRIDE...",
+            "OVERRIDING_WINRATE_RATIO_TO_89.4%...",
+            "EXTRACTING_DATABASE_SEED_GENERATOR...",
+            "PATCHING_ANTI_CHEAT_SIGNATURE_v9.1...",
+            "BYPASSING_PAYOUT_LIMITATION_ENCRYPTION...",
+            "ESTABLISHING_VPN_TUNNEL_UDP_PORT_8080...",
+            "FORCING_MAXWIN_PROTOCOL_HANDSHAKE...",
+            "DECRYPTING_SERVER_SESSION_TOKEN...",
+            "SPOOFING_DEVICE_USER_AGENT_v.14.2...",
+            "STABILIZING_SECURE_GATEWAY_ACCESS...",
+            "CLEARING_ACCESS_LOGS_FROM_CDN...",
+            "OPTIMIZING_PACKET_DELIVERY_DELAY:12ms"
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
-            const consoleLog = document.getElementById('console-log');
-            const toggles = document.querySelectorAll('.toggle-checkbox');
-            const shortcutButtons = document.querySelectorAll('.shortcut-btn');
-            
-            // Premium Key Logic
-            const premiumKeyInput = document.getElementById('premium-key-input');
-            const verifyKeyBtn = document.getElementById('verify-key-btn');
-            const premiumToggles = document.querySelectorAll('.premium-feature');
-            
-            // --- 1. RENDER SERVER BUTTONS SECARA DINAMIS ---
-            function renderServers() {
-                SERVER_DATA.forEach(server => {
-                    const container = document.getElementById(`server-container-${server.id}`);
-                    if (!container) return;
-
-                    const isVip = (server.id === VIP_SERVER_ID);
-                    
-                    let htmlContent = '';
-
-                    if (isVip) {
-                        // TAMPILAN VIP (REKOMENDASI)
-                        htmlContent = `
-                            <div class="relative group">
-                                <div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                                <button class="server-btn btn-vip relative w-full p-4 rounded-lg flex items-center justify-between group-hover:scale-[1.01]"
-                                        data-name="${server.name}"
-                                        data-url="${server.url}">
-                                    <div class="flex items-center space-x-3">
-                                        <div class="p-2 bg-white/10 rounded-lg">
-                                            <svg class="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                        </div>
-                                        <div class="text-left">
-                                            <div class="font-bold text-lg leading-none">${server.name}</div>
-                                            <div class="text-[10px] text-purple-200 mt-1 uppercase tracking-wider">Server Utama (VIP)</div>
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <div class="text-xs text-emerald-300 font-mono">PING: 12ms</div>
-                                        <div class="w-2 h-2 bg-emerald-400 rounded-full ml-auto mt-1 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
-                                    </div>
-                                </button>
-                            </div>
-                        `;
-                    } else {
-                        // TAMPILAN STANDARD
-                        htmlContent = `
-                            <button class="server-btn btn-standard w-full p-3 rounded-lg flex items-center justify-between"
-                                    data-name="${server.name}"
-                                    data-url="${server.url}">
-                                <div class="flex items-center space-x-3">
-                                    <div class="p-2 bg-gray-800 rounded-lg text-gray-400">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                                    </div>
-                                    <div class="text-left">
-                                        <div class="font-bold text-gray-200">${server.name}</div>
-                                        <div class="text-[10px] text-gray-500 uppercase">Server Cadangan</div>
-                                    </div>
-                                </div>
-                                <div class="text-xs text-gray-400 font-mono">PING: 24ms</div>
-                            </button>
-                        `;
-                    }
-
-                    container.innerHTML = htmlContent;
-                });
-            }
-
-            renderServers(); // Jalankan fungsi render saat load
-
-            // --- 2. LOGIC TOMBOL & AKTIVASI ---
             const onlineUsersEl = document.getElementById('online-users');
-            const successRateEl = document.getElementById('success-rate');
-
-            // Toggle Panel Logic
-            const toggleConfigBtn = document.getElementById('toggle-config-btn');
             const configContent = document.getElementById('config-content');
             const configChevron = document.getElementById('config-chevron');
-            let isConfigOpen = false;
-
-            toggleConfigBtn.addEventListener('click', () => {
-                isConfigOpen = !isConfigOpen;
-                if(isConfigOpen) {
-                    configContent.classList.remove('max-h-0', 'opacity-0');
-                    configContent.classList.add('max-h-96', 'opacity-100');
-                    configChevron.classList.add('rotate-180');
-                    addLog('System Configuration panel accessed.', 'info');
+            const toggleConfigBtn = document.getElementById('toggle-config-btn');
+            const premiumKeyInput = document.getElementById('premium-key-input');
+            const verifyBtn = document.getElementById('verify-key-btn');
+            const mainDashboard = document.getElementById('main-dashboard');
+            const hackerOverlay = document.getElementById('hacker-overlay');
+            const hackerConsole = document.getElementById('hacker-console-content');
+            
+            // Render Servers
+            SERVERS.forEach(server => {
+                const container = document.getElementById(`server-container-${server.id}`);
+                if (server.isVip) {
+                    container.innerHTML = `
+                        <button class="server-btn btn-vip w-full p-4 rounded-2xl flex items-center justify-between" data-name="${server.name}" data-url="${server.url}">
+                            <div class="flex items-center space-x-3 text-left">
+                                <div class="p-2 bg-white/10 rounded-xl">
+                                    <svg class="w-7 h-7 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="font-black text-lg leading-none tracking-tighter">${server.name}</div>
+                                    <div class="text-[9px] text-purple-200 mt-1 font-bold uppercase tracking-widest">Target Vector Utama (VIP)</div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-emerald-300 font-mono bg-black/30 px-2 py-1 rounded-lg">12ms</span>
+                        </button>
+                    `;
                 } else {
-                    configContent.classList.remove('max-h-96', 'opacity-100');
-                    configContent.classList.add('max-h-0', 'opacity-0');
+                    container.innerHTML = `
+                        <button class="server-btn bg-white/5 border border-white/5 w-full p-3.5 rounded-2xl flex items-center justify-between hover:bg-white/10 transition" data-name="${server.name}" data-url="${server.url}">
+                            <div class="flex items-center space-x-3 text-left">
+                                <div class="p-1.5 bg-gray-800 rounded-lg text-gray-500">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-300 text-sm tracking-widest">${server.name}</div>
+                                    <div class="text-[9px] text-gray-600 uppercase font-mono">Relay Standby Node</div>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-gray-500 font-mono">24ms</span>
+                        </button>
+                    `;
+                }
+            });
+
+            // Key Verification (6 chars + 6 digits)
+            verifyBtn.onclick = () => {
+                const key = premiumKeyInput.value.trim().toUpperCase();
+                let letters = (key.match(/[A-Z]/g) || []).length;
+                let numbers = (key.match(/[0-9]/g) || []).length;
+
+                if (key.length === 12 && letters === 6 && numbers === 6) {
+                    document.querySelectorAll('.premium-feature').forEach(t => t.disabled = false);
+                    document.querySelectorAll('.locked-item').forEach(el => el.classList.remove('locked-item'));
+                    verifyBtn.textContent = "UNLOCKED";
+                    verifyBtn.classList.replace('bg-white/10', 'bg-green-600');
+                    premiumKeyInput.disabled = true;
+                    premiumKeyInput.value = "VIP_ACCESS_AUTHORIZED";
+                } else {
+                    premiumKeyInput.classList.add('border-red-500');
+                    setTimeout(() => premiumKeyInput.classList.remove('border-red-500'), 1000);
+                }
+            };
+
+            // Toggle logic
+            let configOpen = false;
+            toggleConfigBtn.onclick = () => {
+                configOpen = !configOpen;
+                if(configOpen) {
+                    configContent.classList.replace('max-h-0', 'max-h-[1000px]');
+                    configContent.classList.replace('opacity-0', 'opacity-100');
+                    configChevron.classList.add('rotate-180');
+                } else {
+                    configContent.classList.replace('max-h-[1000px]', 'max-h-0');
+                    configContent.classList.replace('opacity-100', 'opacity-0');
                     configChevron.classList.remove('rotate-180');
                 }
+            };
+
+            // --- FINAL ACTION LOGIC ---
+            function startHackerGimmick(serverName, targetUrl) {
+                mainDashboard.style.opacity = '0';
+                setTimeout(() => {
+                    mainDashboard.style.display = 'none';
+                    hackerOverlay.style.display = 'block';
+                    document.getElementById('target-display').textContent = serverName;
+
+                    let progress = 0;
+                    const progressBar = document.getElementById('hacker-progress-bar');
+                    const percentText = document.getElementById('hacker-percent');
+                    const statusMsg = document.getElementById('hacker-status-msg');
+
+                    // Code generation loop
+                    const logInterval = setInterval(() => {
+                        const logLine = document.createElement('div');
+                        logLine.className = 'hacker-text opacity-40';
+                        const randomLog = RELATABLE_LOGS[Math.floor(Math.random() * RELATABLE_LOGS.length)];
+                        logLine.textContent = `[SYSTEM_INJECTION] >> ${randomLog} >> ${Math.random().toString(16).substr(2, 6).toUpperCase()}`;
+                        hackerConsole.prepend(logLine);
+                        if(hackerConsole.children.length > 50) hackerConsole.lastChild.remove();
+                    }, 40);
+
+                    // Steps for status text
+                    const steps = [
+                        "AUTHENTICATING USER...",
+                        "BYPASSING SECURITY FIREWALL...",
+                        "INJECTING PAYLOAD TO SERVER...",
+                        "ESTABLISHING SECURE GATEWAY...",
+                        "FORCE-OVERRIDING RNG RATIO...",
+                        "CLEANING TRACES & LOGS...",
+                        "FINALIZING REDIRECTION..."
+                    ];
+
+                    // Progress Loop
+                    const progressInterval = setInterval(() => {
+                        progress += Math.floor(Math.random() * 2) + 1;
+                        if(progress > 100) progress = 100;
+
+                        progressBar.style.width = progress + '%';
+                        percentText.textContent = progress + '%';
+
+                        const stepIndex = Math.floor((progress / 100) * steps.length);
+                        if(steps[stepIndex]) statusMsg.textContent = steps[stepIndex];
+
+                        if(progress >= 100) {
+                            clearInterval(progressInterval);
+                            clearInterval(logInterval);
+                            setTimeout(() => {
+                                window.location.href = targetUrl;
+                            }, 500);
+                        }
+                    }, 50);
+
+                }, 500);
+            }
+
+            // Bind click to servers
+            document.querySelectorAll('.server-btn').forEach(btn => {
+                btn.onclick = () => {
+                    const name = btn.dataset.name;
+                    const url = btn.dataset.url;
+                    startHackerGimmick(name, url);
+                };
             });
 
-            // Live Stats (Gimik)
+            // Live Users
             setInterval(() => {
-                let currentUsers = parseInt(onlineUsersEl.textContent.replace(/,/g, ''));
-                let change = Math.floor(Math.random() * 10) - 4;
-                let newUsers = currentUsers + change;
-                if(newUsers < 1000) newUsers = 1000;
-                onlineUsersEl.textContent = newUsers.toLocaleString();
-
-                if(Math.random() > 0.7) {
-                    let rate = (98 + Math.random()).toFixed(1);
-                    if (rate > 99.9) rate = 99.9;
-                    successRateEl.textContent = rate + "%";
-                }
-            }, 2000);
-
-            // Logger
-            function addLog(text, type = 'info') {
-                const p = document.createElement('p');
-                let prefix = '>';
-                let colorClass = 'text-green-500';
-
-                if (type === 'process') { prefix = '>>'; colorClass = 'text-yellow-400'; }
-                if (type === 'error') { prefix = '[ERR]'; colorClass = 'text-red-500'; }
-                if (type === 'success') { prefix = '[OK]'; colorClass = 'text-cyan-400 font-bold'; }
-                if (type === 'setting') { prefix = '[CFG]'; colorClass = 'text-purple-400'; }
-                if (type === 'danger') { prefix = '[WARN]'; colorClass = 'text-red-500 font-bold'; }
-
-                p.innerHTML = `<span class="opacity-50 mr-1">${getTime()}</span> <span class="${colorClass}">${prefix} ${text}</span>`;
-                consoleLog.appendChild(p);
-                consoleLog.scrollTop = consoleLog.scrollHeight;
-            }
-
-            function getTime() {
-                const now = new Date();
-                return now.toLocaleTimeString('id-ID', {hour12: false, hour: '2-digit', minute:'2-digit', second:'2-digit'});
-            }
-
-            // --- 3. PREMIUM KEY VALIDATION ---
-            verifyKeyBtn.addEventListener('click', () => {
-                const key = premiumKeyInput.value.trim().toUpperCase();
-                
-                // Format: 6 letters and 6 numbers (random order)
-                // Remove all non-alphanumeric chars first just in case
-                const cleanKey = key.replace(/[^A-Z0-9]/g, '');
-                
-                if (cleanKey.length !== 12) {
-                    // PESAN ERROR DIGANTI JADI UMUM
-                    addLog('ACCESS DENIED: Invalid Key', 'error');
-                    premiumKeyInput.classList.add('border-red-500');
-                    setTimeout(() => premiumKeyInput.classList.remove('border-red-500'), 1000);
-                    return;
-                }
-
-                // Count letters and numbers
-                let letterCount = 0;
-                let numberCount = 0;
-
-                for (let i = 0; i < cleanKey.length; i++) {
-                    if (isNaN(cleanKey[i])) {
-                        letterCount++;
-                    } else {
-                        numberCount++;
-                    }
-                }
-
-                if (letterCount === 6 && numberCount === 6) {
-                    // SUCCESS
-                    addLog('Premium Key Accepted! Unlocking modules...', 'success');
-                    
-                    premiumToggles.forEach(toggle => {
-                        toggle.disabled = false;
-                    });
-
-                    // Remove "locked-item" styling
-                    const lockedItems = document.querySelectorAll('.locked-item');
-                    lockedItems.forEach(item => {
-                        item.classList.remove('locked-item');
-                        const lockIcon = item.querySelector('svg');
-                        if(lockIcon) lockIcon.style.display = 'none'; // Hide lock icon
-                        item.classList.add('bg-green-900/10', 'border-green-500/10'); // Slight green tint
-                    });
-                    
-                    premiumKeyInput.disabled = true;
-                    verifyKeyBtn.disabled = true;
-                    verifyKeyBtn.textContent = "UNLOCKED";
-                    verifyKeyBtn.classList.remove('bg-yellow-600');
-                    verifyKeyBtn.classList.add('bg-green-600');
-
-                } else {
-                    // FAIL - PESAN ERROR DIGANTI JADI UMUM
-                    addLog('ACCESS DENIED: Invalid Key', 'error');
-                    premiumKeyInput.classList.add('border-red-500');
-                    setTimeout(() => premiumKeyInput.classList.remove('border-red-500'), 1000);
-                }
-            });
-
-            // Setting Toggle Listener
-            toggles.forEach(toggle => {
-                toggle.addEventListener('change', (e) => {
-                    const settingRow = e.target.closest('.flex') || e.target.closest('.col-span-2');
-                    let featureName = "";
-                    const labelSpan = settingRow.querySelector('span.text-\\[10px\\]') || settingRow.querySelector('span.text-\\[11px\\]');
-                    if (labelSpan) featureName = labelSpan.textContent.replace('⚠️ ', '');
-
-                    const status = e.target.checked ? 'ENABLED' : 'DISABLED';
-                    
-                    if (featureName.includes('SUPER SCATTER')) {
-                        if(e.target.checked) {
-                             addLog(`!!! DANGER: ${featureName} ACTIVATED !!!`, 'danger');
-                             setTimeout(() => addLog('Forcing server algorithms...', 'danger'), 500);
-                        } else {
-                             addLog(`${featureName} deactivated safely.`, 'setting');
-                        }
-                    } else {
-                        addLog(`Updating protocol: ${featureName} -> ${status}`, 'setting');
-                        if(e.target.checked) {
-                            setTimeout(() => addLog(`Configuring ${featureName} parameters...`, 'process'), 500);
-                        }
-                    }
-                });
-            });
-
-            // Activation Logic
-            function activateServer(name, url) {
-                const currentButtons = document.querySelectorAll('.server-btn');
-                
-                currentButtons.forEach(btn => {
-                    btn.disabled = true;
-                    btn.style.opacity = '0.5';
-                    btn.style.cursor = 'not-allowed';
-                });
-                shortcutButtons.forEach(btn => btn.style.pointerEvents = 'none');
-                toggles.forEach(t => t.disabled = true);
-                
-                if(isConfigOpen) {
-                     configContent.classList.remove('max-h-96', 'opacity-100');
-                     configContent.classList.add('max-h-0', 'opacity-0');
-                     configChevron.classList.remove('rotate-180');
-                     isConfigOpen = false;
-                }
-                toggleConfigBtn.disabled = true;
-
-                consoleLog.innerHTML = '';
-                addLog(`Target locked: ${name}`, 'process');
-                
-                let activeSettings = [];
-                // UPDATE SETTINGS CHECK HERE
-                if(document.getElementById('toggle-winrate').checked) activeSettings.push("High-Winrate");
-                if(document.getElementById('toggle-zeus').checked) activeSettings.push("Zeus-Locker");
-                if(document.getElementById('toggle-mahjong').checked) activeSettings.push("Mahjong-Scatter");
-                if(document.getElementById('toggle-rtp').checked) activeSettings.push("RTP-Inject");
-                if(document.getElementById('toggle-bonanza').checked) activeSettings.push("Bonanza-Sensor");
-                if(document.getElementById('toggle-autobuy').checked) activeSettings.push("Auto-Buy");
-                if(document.getElementById('toggle-super-scatter').checked) activeSettings.push("SUPER-HACK");
-                
-                if(activeSettings.length > 0) {
-                     setTimeout(() => addLog(`Loading modules: ${activeSettings.join(', ')}...`, 'setting'), 500);
-                     if(activeSettings.includes("SUPER-HACK")) {
-                         setTimeout(() => addLog('Injecting MALICIOUS SCATTER CODE...', 'danger'), 1200);
-                     }
-                }
-
-                setTimeout(() => addLog('Bypassing security firewall...', 'process'), 1500);
-                setTimeout(() => addLog('Injecting payload (WinRate Booster)...', 'process'), 3000);
-                setTimeout(() => addLog('Packet data received. Decrypting...', 'info'), 4500);
-                
-                setTimeout(() => {
-                    addLog('INJECTION SUCCESSFUL!', 'success');
-                    addLog('Redirecting to secure server...', 'info');
-                }, 6000);
-
-                setTimeout(() => {
-                    try {
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.target = '_top';
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                    } catch (e) {
-                        addLog('Auto-redirect failed. Please click manually.', 'error');
-                        currentButtons.forEach(btn => { btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer'; });
-                    }
-                }, 8000);
-            }
-
-            // Bind click events to dynamically created buttons
-            const containers = [
-                document.getElementById('server-container-1'),
-                document.getElementById('server-container-2'),
-                document.getElementById('server-container-3')
-            ];
-
-            containers.forEach(container => {
-                container.addEventListener('click', (e) => {
-                    const btn = e.target.closest('.server-btn');
-                    if(btn) {
-                        const name = btn.dataset.name;
-                        const url = btn.dataset.url;
-                        activateServer(name, url);
-                    }
-                });
-            });
-
+                let current = parseInt(onlineUsersEl.textContent.replace(',', ''));
+                current += Math.floor(Math.random() * 5) - 2;
+                onlineUsersEl.textContent = current.toLocaleString();
+            }, 3000);
         });
     </script>
 </body>
 </html>
-
 
