@@ -53,13 +53,19 @@
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
         }
 
-        /* --- CONFIG BUTTON ANIMATION --- */
+        /* --- CONFIG BUTTON EYE-CATCHING --- */
         .btn-config-eye-catching {
-            background: linear-gradient(90deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.25));
+            background: linear-gradient(90deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.3));
             border: 1px solid rgba(139, 92, 246, 0.6);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(139, 92, 246, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(139, 92, 246, 0.6); }
         }
 
         .btn-config-eye-catching::before {
@@ -93,7 +99,7 @@
             background: linear-gradient(90deg, #f59e0b, #d97706);
             color: #000;
             font-weight: 800;
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
             transition: 0.3s;
         }
 
@@ -107,24 +113,24 @@
         .locked-item { opacity: 0.45; filter: grayscale(0.8); transition: 0.3s; }
         .premium-badge { font-size: 7px; background: #f59e0b; color: #000; padding: 1px 4px; border-radius: 2px; font-weight: 900; }
 
-        /* --- NOTIF GIMMICK --- */
+        /* --- NOTIF WD GIMMICK --- */
         .notif-wd {
             position: fixed;
             bottom: 20px;
-            right: -300px;
-            width: 260px;
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(16, 185, 129, 0.4);
+            left: -320px;
+            width: 280px;
+            background: rgba(15, 23, 42, 0.95);
+            border-left: 4px solid #10b981;
             border-radius: 12px;
-            padding: 12px;
+            padding: 14px;
             z-index: 200;
-            transition: right 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: left 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
         }
 
         .notif-wd.show {
-            right: 20px;
+            left: 20px;
         }
 
         /* --- FINAL ACTION WINDOW --- */
@@ -132,7 +138,7 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background-color: #000;
-            z-index: 100;
+            z-index: 500;
             display: none;
             padding: 20px;
             overflow: hidden;
@@ -177,14 +183,14 @@
     <div class="grid-overlay"></div>
 
     <!-- NOTIF WD GIMMICK -->
-    <div id="wd-notif" class="notif-wd flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30">
-            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    <div id="wd-notif" class="notif-wd flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30">
+            <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </div>
         <div>
-            <div class="text-[10px] text-gray-400 uppercase font-mono tracking-wider">Withdraw Sukses!</div>
-            <div class="text-xs font-bold text-white"><span id="wd-user" class="text-emerald-400">member_88</span> • <span id="wd-amount" class="text-yellow-400">Rp 2.450.000</span></div>
-            <div class="text-[9px] text-purple-400 font-bold">Server: IBLBET (VIP) 🔥</div>
+            <div class="text-[10px] text-emerald-400 uppercase font-mono font-bold tracking-widest">Withdraw Success!</div>
+            <div class="text-xs font-bold text-white mt-0.5"><span id="wd-user">member_72</span> • <span id="wd-amount" class="text-yellow-400 font-black">Rp 5.200.000</span></div>
+            <div class="text-[9px] text-gray-400 font-mono mt-1">Server VIP: <span id="wd-server-name" class="text-purple-400 font-bold">IBLBET</span> 🔥</div>
         </div>
     </div>
 
@@ -204,12 +210,12 @@
         <div class="flex justify-between items-center px-6 py-3 bg-black/40 border-b border-white/5 text-[10px] font-mono">
             <div class="flex items-center space-x-2 text-emerald-400">
                 <span class="w-2 h-2 bg-emerald-500 rounded-full active-dot"></span>
-                <span>ACTIVE NODES: <span id="online-users" class="font-bold">1,402</span></span>
+                <span>ONLINE USERS: <span id="online-users" class="font-bold">1,402</span></span>
             </div>
-            <div class="text-purple-400">STATUS: <span class="font-bold text-emerald-400">SECURE</span></div>
+            <div class="text-purple-400">TUNNEL: <span class="font-bold text-emerald-400 tracking-widest">SECURE</span></div>
         </div>
 
-        <!-- System Configuration -->
+        <!-- System Configuration (Eye-Catching) -->
         <section class="px-6 pt-6 pb-2">
             <button id="toggle-config-btn" class="btn-config-eye-catching w-full flex items-center justify-between p-4 rounded-2xl focus:outline-none group">
                 <div class="flex items-center gap-3">
@@ -222,22 +228,24 @@
                     </div>
                     <div class="text-left">
                         <h2 class="text-sm font-black text-white tracking-widest uppercase">System Configuration</h2>
-                        <span id="config-hint" class="text-[9px] text-purple-400 font-mono block animate-pulse mt-0.5">MODUL PREMIUM DIBAWAH SINI</span>
+                        <span id="config-hint" class="text-[9px] text-purple-400 font-mono block animate-pulse mt-0.5 tracking-tighter">KLIK UNTUK MODUL PREMIUM & ORDER KEY</span>
                     </div>
                 </div>
                 <svg id="config-chevron" class="w-5 h-5 text-purple-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             
             <!-- Menu Dropdown -->
-            <div id="config-content" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mt-4 space-y-3">
+            <div id="config-content" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mt-4 space-y-4">
                 
                 <div class="grid grid-cols-2 gap-3">
+                    <!-- STANDAR -->
                     <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between">
                         <span class="text-[10px] text-gray-300 font-mono">HIGH WINRATE AI</span>
                         <input type="checkbox" id="toggle-winrate" class="toggle-checkbox"/>
                         <label for="toggle-winrate" class="toggle-label"></label>
                     </div>
 
+                    <!-- PREMIUM -->
                     <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between locked-item">
                         <div class="flex items-center gap-1">
                             <span class="text-[10px] text-yellow-500 font-mono">ZEUS LOCKER</span>
@@ -300,17 +308,17 @@
                 <div class="pt-4 border-t border-white/10">
                     <h3 class="text-[10px] text-yellow-500 font-bold font-mono tracking-widest mb-2 uppercase">Input Verification Key</h3>
                     <div class="flex gap-2">
-                        <input type="text" id="premium-key-input" placeholder="MASUKKAN KODE PREMIUM" class="flex-1 bg-black/60 border border-white/10 rounded-xl px-4 py-2 text-xs font-mono text-white focus:outline-none focus:border-yellow-500 uppercase tracking-widest">
+                        <input type="text" id="premium-key-input" placeholder="6 HURUF & 6 ANGKA" class="flex-1 bg-black/60 border border-white/10 rounded-xl px-4 py-2 text-xs font-mono text-white focus:outline-none focus:border-yellow-500 uppercase tracking-widest">
                         <button id="verify-key-btn" class="bg-white/10 hover:bg-white/20 text-white text-[10px] font-bold px-4 rounded-xl transition-all border border-white/10 uppercase font-mono">VERIFY</button>
                     </div>
                 </div>
 
-                <!-- ORDER PREMIUM SECTION -->
-                <div class="mt-4 p-4 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-transparent border border-yellow-500/30">
+                <!-- ORDER SECTION (INSIDE CONFIG) -->
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-transparent border border-yellow-500/30">
                     <div class="flex justify-between items-center mb-4">
                         <div class="text-left">
                             <span class="text-[9px] text-yellow-500 font-mono block uppercase tracking-widest">Premium Plan</span>
-                            <h4 class="text-xl font-black text-white italic">FULL ACCESS V7</h4>
+                            <h4 class="text-xl font-black text-white italic tracking-tighter">V7 FULL ACCESS</h4>
                         </div>
                         <div class="text-right">
                             <span class="text-[10px] text-gray-400 block line-through">Rp 250.000</span>
@@ -320,8 +328,8 @@
                     
                     <a href="https://wa.me/6285883607933?text=Halo%20Admin,%20saya%20ingin%20beli%20Premium%20Key%20V7%20seharga%20100rb" target="_blank" 
                        class="btn-buy-now w-full py-3 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-tighter shadow-lg">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        Beli Premium Key (WhatsApp)
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Beli Premium Key via WhatsApp
                     </a>
                 </div>
             </div>
@@ -329,7 +337,7 @@
 
         <!-- Server Selection -->
         <section class="p-6 space-y-4 pt-0">
-            <h2 class="text-[10px] font-bold text-gray-500 tracking-widest font-mono mb-2 uppercase">Target Vector Server</h2>
+            <h2 class="text-[10px] font-bold text-gray-500 tracking-widest font-mono mb-2 uppercase">Target Vector Server Node</h2>
             <div id="server-container-1"></div>
             <div id="server-container-2"></div>
             <div id="server-container-3"></div>
@@ -356,36 +364,36 @@
                     <div class="progress-bar-fill" id="hacker-progress-bar"></div>
                 </div>
                 <div class="hacker-text text-[9px] mt-2 opacity-50 uppercase tracking-[2px]">
-                    Cipher: AES-XTS | Target: <span id="target-display">NONE</span> | Mode: Infiltration
+                    Cipher: AES-XTS | Target: <span id="target-display">NONE</span> | Protocol: Secure Tunnel V7
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // --- CONFIG ---
+        // --- KONFIGURASI SERVER ---
         const SERVERS = [
             { id: 1, name: "RUTE303", url: "https://rute303-ayo.rest/?ref=jannbz", isVip: false },
             { id: 2, name: "IBLBET", url: "https://iblkudaapi.com/?ref=apkgacor", isVip: false },
             { id: 3, name: "NX303", url: "https://nx303boy.live/?ref=apkgacor", isVip: true }
         ];
 
+        // RELATABLE HACKER LOGS
         const RELATABLE_LOGS = [
-            "CONNECTING_TO_SLOT_DATABASE_v4.2...",
             "BYPASSING_RNG_ALGORITHM_SEED_72x...",
             "SPOOFING_IP_ADDRESS_LOC:SG_SERVER_01",
             "INJECTING_SCATTER_PACKET_OVERRIDE...",
             "OVERRIDING_WINRATE_RATIO_TO_89.4%...",
-            "EXTRACTING_DATABASE_SEED_GENERATOR...",
             "PATCHING_ANTI_CHEAT_SIGNATURE_v9.1...",
-            "BYPASSING_PAYOUT_LIMITATION_ENCRYPTION...",
-            "FORCING_MAXWIN_PROTOCOL_HANDSHAKE...",
-            "DECRYPTING_SERVER_SESSION_TOKEN...",
-            "OPTIMIZING_PACKET_DELIVERY_DELAY:12ms"
+            "FORCE-INJECTING_MAXWIN_HANDSHAKE...",
+            "SPOOFING_USER_AGENT_v.14.2...",
+            "STABILIZING_GATEWAY_ACCESS_TUNNEL...",
+            "EXTRACTING_DATABASE_WIN_GENERATOR...",
+            "CLEARING_CDN_ACCESS_LOGS_0x7F..."
         ];
 
-        const NOTIF_USERS = ["Alex_JP", "Sultan_Slot", "Riki_Max", "Putri88", "GacorMan", "User_772", "VVIP_Player", "Dewa_Scatter", "Anti_Rungkad", "WD_Lancar"];
-        const NOTIF_AMOUNTS = ["Rp 1.500.000", "Rp 3.200.000", "Rp 750.000", "Rp 12.000.000", "Rp 5.400.000", "Rp 2.100.000", "Rp 45.000.000", "Rp 8.900.000"];
+        const NOTIF_USERS = ["Budi_Jackpot", "Sultan_Slot", "Riki_Gacor", "Putri88", "Dewa_JP", "Alex_77", "VVIP_Player", "Dina_Max", "GacorMan", "User_882"];
+        const NOTIF_AMOUNTS = ["Rp 2.450.000", "Rp 5.120.000", "Rp 850.000", "Rp 12.000.000", "Rp 7.800.000", "Rp 1.100.000", "Rp 32.500.000", "Rp 4.900.000"];
 
         document.addEventListener('DOMContentLoaded', () => {
             const onlineUsersEl = document.getElementById('online-users');
@@ -398,7 +406,7 @@
             const hackerOverlay = document.getElementById('hacker-overlay');
             const hackerConsole = document.getElementById('hacker-console-content');
             
-            // Render Servers
+            // --- RENDER SERVERS ---
             SERVERS.forEach(server => {
                 const container = document.getElementById(`server-container-${server.id}`);
                 if (server.isVip) {
@@ -434,34 +442,36 @@
                 }
             });
 
-            // Gimmick Notif Logic
+            // --- GIMMICK NOTIF WD ---
             const wdNotif = document.getElementById('wd-notif');
             const wdUser = document.getElementById('wd-user');
             const wdAmount = document.getElementById('wd-amount');
+            const wdServerNameLabel = document.getElementById('wd-server-name');
 
             function showWdNotif() {
-                const randomUser = NOTIF_USERS[Math.floor(Math.random() * NOTIF_USERS.length)];
-                const randomAmount = NOTIF_AMOUNTS[Math.floor(Math.random() * NOTIF_AMOUNTS.length)];
+                // Mencari server VIP secara dinamis dari config
+                const currentVipServer = SERVERS.find(s => s.isVip) || { name: "VIP" };
                 
-                wdUser.textContent = randomUser;
-                wdAmount.textContent = randomAmount;
+                wdUser.textContent = NOTIF_USERS[Math.floor(Math.random() * NOTIF_USERS.length)];
+                wdAmount.textContent = NOTIF_AMOUNTS[Math.floor(Math.random() * NOTIF_AMOUNTS.length)];
+                wdServerNameLabel.textContent = currentVipServer.name;
                 
                 wdNotif.classList.add('show');
                 
                 setTimeout(() => {
                     wdNotif.classList.remove('show');
-                }, 4000);
+                }, 4500);
             }
 
-            // Jalankan notif pertama setelah 3 detik, lalu setiap 8-15 detik
+            // Loop notifikasi acak
             setTimeout(() => {
                 showWdNotif();
                 setInterval(() => {
                     showWdNotif();
-                }, Math.random() * (15000 - 8000) + 8000);
+                }, Math.random() * (16000 - 9000) + 9000);
             }, 3000);
 
-            // Key Verification
+            // --- PREMIUM KEY LOGIC ---
             verifyBtn.onclick = () => {
                 const key = premiumKeyInput.value.trim().toUpperCase();
                 let letters = (key.match(/[A-Z]/g) || []).length;
@@ -473,32 +483,32 @@
                     verifyBtn.textContent = "AUTHORIZED";
                     verifyBtn.classList.replace('bg-white/10', 'bg-green-600');
                     premiumKeyInput.disabled = true;
-                    premiumKeyInput.value = "VIP_ACCESS_ACTIVE";
+                    premiumKeyInput.value = "VIP_MEMBER_ACTIVE";
                 } else {
                     premiumKeyInput.classList.add('border-red-500');
                     setTimeout(() => premiumKeyInput.classList.remove('border-red-500'), 1000);
                 }
             };
 
-            // Toggle logic
+            // Toggle Config
             let configOpen = false;
             toggleConfigBtn.onclick = () => {
                 configOpen = !configOpen;
                 if(configOpen) {
-                    configContent.classList.replace('max-h-0', 'max-h-[1000px]');
+                    configContent.classList.replace('max-h-0', 'max-h-[1200px]');
                     configContent.classList.replace('opacity-0', 'opacity-100');
                     configChevron.classList.add('rotate-180');
                 } else {
-                    configContent.classList.replace('max-h-[1000px]', 'max-h-0');
+                    configContent.classList.replace('max-h-[1200px]', 'max-h-0');
                     configContent.classList.replace('opacity-100', 'opacity-0');
                     configChevron.classList.remove('rotate-180');
                 }
             };
 
-            // Hacker Action
-            function startHackerGimmick(serverName, targetUrl) {
+            // --- FINAL HACKER ACTION ---
+            function startHackerAction(serverName, targetUrl) {
                 mainDashboard.style.opacity = '0';
-                wdNotif.style.display = 'none'; // Sembunyikan notif saat hack
+                wdNotif.style.display = 'none'; // Matikan notif saat hack
                 
                 setTimeout(() => {
                     mainDashboard.style.display = 'none';
@@ -510,22 +520,24 @@
                     const percentText = document.getElementById('hacker-percent');
                     const statusMsg = document.getElementById('hacker-status-msg');
 
-                    const logInterval = setInterval(() => {
-                        const logLine = document.createElement('div');
-                        logLine.className = 'hacker-text opacity-40';
+                    // Code flow loop
+                    const codeInterval = setInterval(() => {
+                        const line = document.createElement('div');
+                        line.className = 'hacker-text opacity-40';
                         const randomLog = RELATABLE_LOGS[Math.floor(Math.random() * RELATABLE_LOGS.length)];
-                        logLine.textContent = `[INJECT_LOG] >> ${randomLog} >> 0x${Math.random().toString(16).substr(2, 4).toUpperCase()}`;
-                        hackerConsole.prepend(logLine);
-                        if(hackerConsole.children.length > 50) hackerConsole.lastChild.remove();
+                        line.textContent = `[VECTOR_X7] >> ${randomMsg} >> 0x${Math.random().toString(16).substr(2, 6).toUpperCase()}`;
+                        hackerConsole.prepend(line);
+                        if(hackerConsole.children.length > 60) hackerConsole.lastChild.remove();
                     }, 40);
 
                     const steps = [
-                        "AUTHENTICATING VIP SESSION...",
-                        "BYPASSING SECURITY FIREWALL...",
-                        "INJECTING MAXWIN PACKETS...",
-                        "OVERRIDING RNG SEED...",
-                        "CLEANING TRACES...",
-                        "ESTABLISHING GATEWAY..."
+                        "INITIALIZING_INJECTION_MODULE...",
+                        "BYPASSING_RNG_ENCRYPTION...",
+                        "PATCHING_SERVER_PACKETS...",
+                        "FORCING_WIN_RATIO_OVERRIDE...",
+                        "ESTABLISHING_VPN_TUNNEL...",
+                        "CLEANING_SYSTEM_TRACES...",
+                        "REDIRECTING_TO_STATION..."
                     ];
 
                     const progressInterval = setInterval(() => {
@@ -535,17 +547,18 @@
                         progressBar.style.width = progress + '%';
                         percentText.textContent = progress + '%';
 
-                        const stepIndex = Math.floor((progress / 100) * steps.length);
-                        if(steps[stepIndex]) statusMsg.textContent = steps[stepIndex];
+                        const stepIdx = Math.floor((progress / 100) * steps.length);
+                        if(steps[stepIdx]) statusMsg.textContent = steps[stepIdx];
 
                         if(progress >= 100) {
                             clearInterval(progressInterval);
-                            clearInterval(logInterval);
+                            clearInterval(codeInterval);
                             setTimeout(() => {
                                 window.location.href = targetUrl;
                             }, 500);
                         }
-                    }, 50);
+                    }, 60);
+
                 }, 500);
             }
 
@@ -553,14 +566,14 @@
                 btn.onclick = () => {
                     const name = btn.dataset.name;
                     const url = btn.dataset.url;
-                    startHackerGimmick(name, url);
+                    startHackerAction(name, url);
                 };
             });
 
             setInterval(() => {
-                let current = parseInt(onlineUsersEl.textContent.replace(',', ''));
-                current += Math.floor(Math.random() * 5) - 2;
-                onlineUsersEl.textContent = current.toLocaleString();
+                let val = parseInt(onlineUsersEl.textContent.replace(',', ''));
+                val += Math.floor(Math.random() * 5) - 2;
+                onlineUsersEl.textContent = val.toLocaleString();
             }, 3000);
         });
     </script>
