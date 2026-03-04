@@ -107,7 +107,27 @@
         .locked-item { opacity: 0.45; filter: grayscale(0.8); transition: 0.3s; }
         .premium-badge { font-size: 7px; background: #f59e0b; color: #000; padding: 1px 4px; border-radius: 2px; font-weight: 900; }
 
-        /* --- FINAL ACTION WINDOW (HACKER GIMMICK) --- */
+        /* --- NOTIF GIMMICK --- */
+        .notif-wd {
+            position: fixed;
+            bottom: 20px;
+            right: -300px;
+            width: 260px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: 12px;
+            padding: 12px;
+            z-index: 200;
+            transition: right 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .notif-wd.show {
+            right: 20px;
+        }
+
+        /* --- FINAL ACTION WINDOW --- */
         #hacker-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -156,6 +176,18 @@
     <div class="bg-animate"></div>
     <div class="grid-overlay"></div>
 
+    <!-- NOTIF WD GIMMICK -->
+    <div id="wd-notif" class="notif-wd flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30">
+            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <div>
+            <div class="text-[10px] text-gray-400 uppercase font-mono tracking-wider">Withdraw Sukses!</div>
+            <div class="text-xs font-bold text-white"><span id="wd-user" class="text-emerald-400">member_88</span> • <span id="wd-amount" class="text-yellow-400">Rp 2.450.000</span></div>
+            <div class="text-[9px] text-purple-400 font-bold">Server: IBLBET (VIP) 🔥</div>
+        </div>
+    </div>
+
     <!-- MAIN DASHBOARD -->
     <main id="main-dashboard" class="w-full max-w-md glass-panel rounded-3xl overflow-hidden relative z-10 mb-10 transition-opacity duration-500">
         
@@ -177,7 +209,7 @@
             <div class="text-purple-400">STATUS: <span class="font-bold text-emerald-400">SECURE</span></div>
         </div>
 
-        <!-- System Configuration (Expandable) -->
+        <!-- System Configuration -->
         <section class="px-6 pt-6 pb-2">
             <button id="toggle-config-btn" class="btn-config-eye-catching w-full flex items-center justify-between p-4 rounded-2xl focus:outline-none group">
                 <div class="flex items-center gap-3">
@@ -199,7 +231,6 @@
             <!-- Menu Dropdown -->
             <div id="config-content" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mt-4 space-y-3">
                 
-                <!-- FITUR STANDAR -->
                 <div class="grid grid-cols-2 gap-3">
                     <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between">
                         <span class="text-[10px] text-gray-300 font-mono">HIGH WINRATE AI</span>
@@ -207,7 +238,6 @@
                         <label for="toggle-winrate" class="toggle-label"></label>
                     </div>
 
-                    <!-- FITUR PREMIUM -->
                     <div class="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between locked-item">
                         <div class="flex items-center gap-1">
                             <span class="text-[10px] text-yellow-500 font-mono">ZEUS LOCKER</span>
@@ -336,11 +366,10 @@
         // --- CONFIG ---
         const SERVERS = [
             { id: 1, name: "RUTE303", url: "https://rute303-ayo.rest/?ref=jannbz", isVip: false },
-            { id: 2, name: "IBLBET", url: "https://iblrapi.com/?ref=apkgacor", isVip: true },
-            { id: 3, name: "NX303", url: "https://nx303siw.live/?ref=apkgacor", isVip: true }
+            { id: 2, name: "IBLBET", url: "https://iblkudaapi.com/?ref=apkgacor", isVip: false },
+            { id: 3, name: "NX303", url: "https://nx303boy.live/?ref=apkgacor", isVip: true }
         ];
 
-        // RELATABLE HACKER LOGS
         const RELATABLE_LOGS = [
             "CONNECTING_TO_SLOT_DATABASE_v4.2...",
             "BYPASSING_RNG_ALGORITHM_SEED_72x...",
@@ -350,14 +379,13 @@
             "EXTRACTING_DATABASE_SEED_GENERATOR...",
             "PATCHING_ANTI_CHEAT_SIGNATURE_v9.1...",
             "BYPASSING_PAYOUT_LIMITATION_ENCRYPTION...",
-            "ESTABLISHING_VPN_TUNNEL_UDP_PORT_8080...",
             "FORCING_MAXWIN_PROTOCOL_HANDSHAKE...",
             "DECRYPTING_SERVER_SESSION_TOKEN...",
-            "SPOOFING_DEVICE_USER_AGENT_v.14.2...",
-            "STABILIZING_SECURE_GATEWAY_ACCESS...",
-            "CLEARING_ACCESS_LOGS_FROM_CDN...",
             "OPTIMIZING_PACKET_DELIVERY_DELAY:12ms"
         ];
+
+        const NOTIF_USERS = ["Alex_JP", "Sultan_Slot", "Riki_Max", "Putri88", "GacorMan", "User_772", "VVIP_Player", "Dewa_Scatter", "Anti_Rungkad", "WD_Lancar"];
+        const NOTIF_AMOUNTS = ["Rp 1.500.000", "Rp 3.200.000", "Rp 750.000", "Rp 12.000.000", "Rp 5.400.000", "Rp 2.100.000", "Rp 45.000.000", "Rp 8.900.000"];
 
         document.addEventListener('DOMContentLoaded', () => {
             const onlineUsersEl = document.getElementById('online-users');
@@ -406,7 +434,34 @@
                 }
             });
 
-            // Key Verification (6 chars + 6 digits)
+            // Gimmick Notif Logic
+            const wdNotif = document.getElementById('wd-notif');
+            const wdUser = document.getElementById('wd-user');
+            const wdAmount = document.getElementById('wd-amount');
+
+            function showWdNotif() {
+                const randomUser = NOTIF_USERS[Math.floor(Math.random() * NOTIF_USERS.length)];
+                const randomAmount = NOTIF_AMOUNTS[Math.floor(Math.random() * NOTIF_AMOUNTS.length)];
+                
+                wdUser.textContent = randomUser;
+                wdAmount.textContent = randomAmount;
+                
+                wdNotif.classList.add('show');
+                
+                setTimeout(() => {
+                    wdNotif.classList.remove('show');
+                }, 4000);
+            }
+
+            // Jalankan notif pertama setelah 3 detik, lalu setiap 8-15 detik
+            setTimeout(() => {
+                showWdNotif();
+                setInterval(() => {
+                    showWdNotif();
+                }, Math.random() * (15000 - 8000) + 8000);
+            }, 3000);
+
+            // Key Verification
             verifyBtn.onclick = () => {
                 const key = premiumKeyInput.value.trim().toUpperCase();
                 let letters = (key.match(/[A-Z]/g) || []).length;
@@ -415,10 +470,10 @@
                 if (key.length === 12 && letters === 6 && numbers === 6) {
                     document.querySelectorAll('.premium-feature').forEach(t => t.disabled = false);
                     document.querySelectorAll('.locked-item').forEach(el => el.classList.remove('locked-item'));
-                    verifyBtn.textContent = "UNLOCKED";
+                    verifyBtn.textContent = "AUTHORIZED";
                     verifyBtn.classList.replace('bg-white/10', 'bg-green-600');
                     premiumKeyInput.disabled = true;
-                    premiumKeyInput.value = "VIP_ACCESS_AUTHORIZED";
+                    premiumKeyInput.value = "VIP_ACCESS_ACTIVE";
                 } else {
                     premiumKeyInput.classList.add('border-red-500');
                     setTimeout(() => premiumKeyInput.classList.remove('border-red-500'), 1000);
@@ -440,9 +495,11 @@
                 }
             };
 
-            // --- FINAL ACTION LOGIC ---
+            // Hacker Action
             function startHackerGimmick(serverName, targetUrl) {
                 mainDashboard.style.opacity = '0';
+                wdNotif.style.display = 'none'; // Sembunyikan notif saat hack
+                
                 setTimeout(() => {
                     mainDashboard.style.display = 'none';
                     hackerOverlay.style.display = 'block';
@@ -453,28 +510,24 @@
                     const percentText = document.getElementById('hacker-percent');
                     const statusMsg = document.getElementById('hacker-status-msg');
 
-                    // Code generation loop
                     const logInterval = setInterval(() => {
                         const logLine = document.createElement('div');
                         logLine.className = 'hacker-text opacity-40';
                         const randomLog = RELATABLE_LOGS[Math.floor(Math.random() * RELATABLE_LOGS.length)];
-                        logLine.textContent = `[SYSTEM_INJECTION] >> ${randomLog} >> ${Math.random().toString(16).substr(2, 6).toUpperCase()}`;
+                        logLine.textContent = `[INJECT_LOG] >> ${randomLog} >> 0x${Math.random().toString(16).substr(2, 4).toUpperCase()}`;
                         hackerConsole.prepend(logLine);
                         if(hackerConsole.children.length > 50) hackerConsole.lastChild.remove();
                     }, 40);
 
-                    // Steps for status text
                     const steps = [
-                        "AUTHENTICATING USER...",
+                        "AUTHENTICATING VIP SESSION...",
                         "BYPASSING SECURITY FIREWALL...",
-                        "INJECTING PAYLOAD TO SERVER...",
-                        "ESTABLISHING SECURE GATEWAY...",
-                        "FORCE-OVERRIDING RNG RATIO...",
-                        "CLEANING TRACES & LOGS...",
-                        "FINALIZING REDIRECTION..."
+                        "INJECTING MAXWIN PACKETS...",
+                        "OVERRIDING RNG SEED...",
+                        "CLEANING TRACES...",
+                        "ESTABLISHING GATEWAY..."
                     ];
 
-                    // Progress Loop
                     const progressInterval = setInterval(() => {
                         progress += Math.floor(Math.random() * 2) + 1;
                         if(progress > 100) progress = 100;
@@ -493,11 +546,9 @@
                             }, 500);
                         }
                     }, 50);
-
                 }, 500);
             }
 
-            // Bind click to servers
             document.querySelectorAll('.server-btn').forEach(btn => {
                 btn.onclick = () => {
                     const name = btn.dataset.name;
@@ -506,7 +557,6 @@
                 };
             });
 
-            // Live Users
             setInterval(() => {
                 let current = parseInt(onlineUsersEl.textContent.replace(',', ''));
                 current += Math.floor(Math.random() * 5) - 2;
@@ -516,3 +566,4 @@
     </script>
 </body>
 </html>
+
